@@ -14,8 +14,8 @@ export default function ChooseAdventure() {
                         <header>
                             <h1 className="title text-4xl font-bold">CHOOSE YOUR ADVENTURE!</h1>
                         </header>
-                        <p className="text-md text-gray-300 tracking-wide">
-                            You have 2nd date adventures available, please SELECT one to continue!
+                        <p className="text-sm text-gray-300 tracking-wide">
+                            These 2nd date adventures are available to <span className="text-red-500">Katie with a D</span>, please <span className="text-green-500">SELECT</span> one to continue!
                         </p>
                     </section>
                     <section className="grid gap-x-12 gap-y-12 grid-cols-3">
