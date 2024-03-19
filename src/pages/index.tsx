@@ -13,8 +13,8 @@ export default function Home() {
                     <header>
                         <h1 className="title text-5xl font-bold">CHOOSE YOUR ADVENTURE!</h1>
                     </header>
-                    <h2 className="text-xl text-gray-300 tracking-wide">
-                        Hi, <span className="text-red-500">Kady</span>! I made this specifically for <span className="text-red-500">you</span>, so I hope you like it.
+                    <h2 className="text-2xl text-gray-300 tracking-wide">
+                        Hi, <span className="text-red-500">Kady</span>! I made this for <span className="text-red-500">you</span>, so I hope you like it.
                     </h2>
                     <p className="text-sm text-gray-300 tracking-wide">
                         Press the <span className="text-green-500">START</span> button below to view some available 2nd date adventures!
