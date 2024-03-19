@@ -7,6 +7,7 @@ export type AdventureProps = {
     location: string;
     difficulty: string;
     status: ADVENTURE_STATUS
+    priority?: boolean;
 }
 
 export enum ADVENTURE_STATUS {
@@ -25,7 +26,8 @@ export const ADVENTURES = [
         description: "Fun for all ages, The Village’s Mini Golf course offers 18 holes, including obstacles! Create lasting memories with everyone by playing a friendly game, or by keeping score for a competitive round of Mini Golf. Bring your own putter, or use one of our own colorful putters and golf balls. The Mini Golf course offers fun for everyone. Bring the whole family down to play a friendly game.",
         location: "Village Mini Golf",
         difficulty: "Easy",
-        status: ADVENTURE_STATUS.AVAILABLE
+        status: ADVENTURE_STATUS.AVAILABLE,
+        priority: true,
     },
     {
         id: "800af8a5-bd13-4596-9b13-63e4f24d5549",
@@ -35,7 +37,8 @@ export const ADVENTURES = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et lorem volutpat, bibendum neque quis, commodo urna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In id velit tortor. Donec eget ligula sit amet nisi consequat mollis. Praesent eget lacus pellentesque, faucibus dolor et, mattis erat. Suspendisse potenti. Etiam non facilisis erat, ornare rhoncus odio. Vestibulum venenatis augue id cursus vestibulum.",
         location: "Unofficial Logging Co.",
         difficulty: "Normal",
-        status: ADVENTURE_STATUS.AVAILABLE
+        status: ADVENTURE_STATUS.AVAILABLE,
+        priority: true,
     },
     {
         id: "ea724ad6-acec-4329-bc05-6f714631b5dc",
@@ -45,7 +48,8 @@ export const ADVENTURES = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et lorem volutpat, bibendum neque quis, commodo urna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In id velit tortor. Donec eget ligula sit amet nisi consequat mollis. Praesent eget lacus pellentesque, faucibus dolor et, mattis erat. Suspendisse potenti. Etiam non facilisis erat, ornare rhoncus odio. Vestibulum venenatis augue id cursus vestibulum.",
         location: "Crescent Moon Ranch",
         difficulty: "Easy",
-        status: ADVENTURE_STATUS.AVAILABLE
+        status: ADVENTURE_STATUS.AVAILABLE,
+        priority: true,
     },
     {
         id: "52ca613c-1dea-41ac-a91d-40890fe766f7",

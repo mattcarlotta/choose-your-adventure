@@ -9,7 +9,7 @@ import UnavailableIcon from "./UnavailableIcon";
 import { ADVENTURE_STATUS } from "../data"
 
 
-export default function Adventure({ id, imageSrc, imageAlt, title, description, location, difficulty, status }: AdventureProps) {
+export default function Adventure({ id, imageSrc, imageAlt, title, description, location, difficulty, status, priority }: AdventureProps) {
     const [wasSelected, setWasSelected] = useState(false);
     const [showModal, setShowModal] = useState<ADVENTURE_STATUS>(ADVENTURE_STATUS.AVAILABLE);
 
@@ -35,7 +35,7 @@ export default function Adventure({ id, imageSrc, imageAlt, title, description, 
                             "border border-gray-300 flex flex-col space-y-6 justify-between col-span-1 pt-6 pb-8 px-4 bg-black min-h-full"
                         )}
                 >
-                    <Image src={`/${imageSrc}.avif`} alt={imageAlt} height={300} width={300} style={{ borderRadius: "20px", margin: "0 auto" }} />
+                    <Image priority={priority} src={`/${imageSrc}.avif`} alt={imageAlt} height={300} width={300} style={{ borderRadius: "20px", margin: "0 auto" }} />
                     <div className="flex flex-col backshadow">
                         <h2 className="backshadow text-2xl">
                             {title}
