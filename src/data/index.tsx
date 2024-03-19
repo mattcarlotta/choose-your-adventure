@@ -101,7 +101,7 @@ export const ADVENTURES = [
         id: "0c1a01c5-76c6-4d02-9d66-1fa4bee0bfa2",
         imageSrc: "cat-walk-around-town",
         imageAlt: "A man wearing high heels and red mini skirt in front of a castle",
-        title: "Cat Walk Around Town",
+        title: "Catwalk Around Town",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et lorem volutpat, bibendum neque quis, commodo urna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In id velit tortor. Donec eget ligula sit amet nisi consequat mollis. Praesent eget lacus pellentesque, faucibus dolor et, mattis erat. Suspendisse potenti. Etiam non facilisis erat, ornare rhoncus odio. Vestibulum venenatis augue id cursus vestibulum.",
         location: "Multiple Locations",
         difficulty: "Legendary",

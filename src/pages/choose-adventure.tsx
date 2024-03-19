@@ -14,19 +14,19 @@ export default function ChooseAdventure() {
                 <div className="w-full max-w-screen-xl flex flex-col space-y-16 min-h-screen">
                     <section className="flex flex-col space-y-0.5">
                         <header>
-                            <h1 className="title text-4xl font-bold">CHOOSE YOUR ADVENTURE!</h1>
+                            <h1 className="title text-5xl font-bold">CHOOSE YOUR ADVENTURE!</h1>
                         </header>
                         <p className="text-sm text-gray-300 tracking-wide">
-                            These 2nd date adventures are available to <span className="text-red-500">Katie with a D</span>, please <span className="text-green-500">SELECT</span> one to continue!
+                            These <span className="text-lg text-orange-500">second date adventures</span> are available to <span className="text-red-500 text-lg">Katie with a D</span>, please <span className="text-green-500 text-lg">SELECT</span> one to continue!
                         </p>
                         <Link
-                            className="unavailable !mt-4 mx-auto font-bold border border-gray-400 text-xl text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"
+                            className="unavailable !mt-4 mx-auto font-bold border border-gray-400 text-sm text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"
                             href="/"
                         >
                             GO BACK
                         </Link>
                     </section>
-                    <section className="grid gap-x-12 gap-y-12 grid-cols-3">
+                    <section className="grid gap-8 grid-cols-3">
                         {ADVENTURES.map(props => <Adventure key={props.id} {...props} />)}
                     </section>
                 </div>
