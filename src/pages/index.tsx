@@ -16,7 +16,7 @@ export default function Home() {
                         <h1 className="title text-5xl font-bold">CHOOSE YOUR ADVENTURE!</h1>
                     </header>
                     <h2 className="text-xl text-gray-300 tracking-wide">
-                        Hi, <span className="text-red-500">Kady</span>, I want your input so I made this for <span className="text-yellow-400">you</span>. I hope you like it!
+                        Hi, <span className="text-red-500">Kady</span>, I wanted your input so I made this for <span className="text-yellow-400">you</span>. I hope you like it!
                     </h2>
                     <Link
                         className="glow font-bold w-40 !mt-8 z-10 border border-gray-400 text-xl text-gray-300 px-3 py-2 cursor-pointer rounded hover:border-white hover:text-white"
