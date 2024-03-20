@@ -29,7 +29,7 @@ export default function ConfirmAdventure({ adventure }: InferGetStaticPropsType<
                     </section>
                     <section className="flex flex-col justify-center items-center">
                         <div className="w-full max-w-md">
-                            <Adventure {...adventure} />
+                            <Adventure {...adventure} priority />
                         </div>
                     </section>
                 </div>
