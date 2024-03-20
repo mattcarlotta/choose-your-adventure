@@ -9,9 +9,24 @@ import LockedIcon from "./LockedIcon";
 import UnavailableIcon from "./UnavailableIcon";
 import CloseIcon from "./CloseIcon";
 import { ADVENTURE_STATUS } from "../data"
+import { useRouter } from "next/router";
 
 
-export default function Adventure({ id, imageSrc, imageAlt, title, description, location, difficulty, status, priority }: AdventureProps) {
+export default function Adventure(
+    {
+        id,
+        imageSrc,
+        imageAlt,
+        title,
+        description,
+        location,
+        difficulty,
+        status,
+        priority,
+        showForm
+    }: AdventureProps & { showForm?: boolean }) {
+    const router = useRouter();
+    const [isSubmitting, setSubmitting] = useState(false);
     const [wasSelected, setWasSelected] = useState(false);
     const [showModal, setShowModal] = useState<ADVENTURE_STATUS>(ADVENTURE_STATUS.AVAILABLE);
 
@@ -22,6 +37,17 @@ export default function Adventure({ id, imageSrc, imageAlt, title, description, 
     const handleCloseModal = () => {
         setShowModal(ADVENTURE_STATUS.AVAILABLE);
         setWasSelected(true);
+    }
+
+    const handleSubmit = async () => {
+        setSubmitting(true);
+        await new Promise(res => setTimeout(res, 2000));
+        try {
+            router.push("/adventure-begins/");
+        } catch (error) {
+            console.error(error);
+            setSubmitting(false);
+        }
     }
 
     useEffect(() => {
@@ -63,41 +89,70 @@ export default function Adventure({ id, imageSrc, imageAlt, title, description, 
                             {description}
                         </p>
                     </div>
-                    {status === ADVENTURE_STATUS.AVAILABLE && (
-                        <Link
-                            className="glow mx-auto font-bold border border-gray-400 text-xl text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"
-                            href={`/confirm-adventure/${id}`}
-                        >
-                            SELECT
-                        </Link>
-                    )}
-                    {(status === ADVENTURE_STATUS.LOCKED || status === ADVENTURE_STATUS.MEMBERS_ONLY || status === ADVENTURE_STATUS.UNAVAILABLE) && !wasSelected && (
-                        <button
-                            type="button"
-                            className="glow mx-auto font-bold border border-gray-400 text-xl text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"
-                            onClick={handleSelection}
-                        >
-                            SELECT
-                        </button>
-                    )}
-                    {status === ADVENTURE_STATUS.UNAVAILABLE && wasSelected && (
-                        <div className="flex space-x-2 items-center mx-auto font-bold text-xl text-gray-400 px-8 py-2 cursor-not-allowed rounded">
-                            <UnavailableIcon className="w-5 h-5 fill-gray-400" />
-                            <span>OUT OF STOCK</span>
-                        </div>
-                    )}
-                    {status === ADVENTURE_STATUS.LOCKED && wasSelected && (
-                        <div className="flex space-x-2 items-center mx-auto font-bold border border-gray-400 text-xl text-gray-400 px-8 py-2 cursor-not-allowed rounded">
-                            <LockedIcon className="w-5 h-5 fill-gray-400" />
-                            <span>DLC PASS ONLY</span>
-                        </div>
-                    )}
-                    {status === ADVENTURE_STATUS.MEMBERS_ONLY && wasSelected && (
-                        <p className="flex space-x-2 items-center members-only mx-auto font-bold border text-xl text-gray-300 px-6 py-2 cursor-not-allowed rounded">
-                            <KeyIcon className="w-6 h-6 fill-black" />
-                            <span>MEMBERS ONLY</span>
-                        </p>
-                    )}
+                    {wasSelected
+                        ? (
+                            <>
+                                {{
+                                    [ADVENTURE_STATUS.UNAVAILABLE]: (
+                                        <div className="flex space-x-2 items-center mx-auto font-bold text-xl text-gray-400 px-8 py-2 cursor-not-allowed rounded">
+                                            <UnavailableIcon className="w-5 h-5 fill-gray-400" />
+                                            <span>OUT OF STOCK</span>
+                                        </div>
+
+                                    ),
+                                    [ADVENTURE_STATUS.LOCKED]: (
+                                        <div className="flex space-x-2 items-center mx-auto font-bold border border-gray-400 text-xl text-gray-400 px-8 py-2 cursor-not-allowed rounded">
+                                            <LockedIcon className="w-5 h-5 fill-gray-400" />
+                                            <span>DLC PASS ONLY</span>
+                                        </div>
+
+                                    ),
+                                    [ADVENTURE_STATUS.MEMBERS_ONLY]: (
+                                        <p className="flex space-x-2 items-center members-only mx-auto font-bold border text-xl text-gray-300 px-6 py-2 cursor-not-allowed rounded">
+                                            <KeyIcon className="w-6 h-6 fill-black" />
+                                            <span>MEMBERS ONLY</span>
+                                        </p>
+
+                                    ),
+                                    [ADVENTURE_STATUS.AVAILABLE]: null,
+                                }[status]}
+                            </>
+                        )
+                        : null
+                    }
+                    {showForm
+                        ? (
+                            <button
+                                type="button"
+                                disabled={isSubmitting}
+                                className="glow mx-auto font-bold border border-gray-400 text-xl text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"
+                                onClick={handleSubmit}
+                            >
+                                {isSubmitting ? "STARTING..." : "START"}
+                            </button>
+                        )
+                        : (
+                            <>
+                                {status === ADVENTURE_STATUS.AVAILABLE && (
+                                    <Link
+                                        className="glow mx-auto font-bold border border-gray-400 text-xl text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"
+                                        href={`/confirm-adventure/${id}`}
+                                    >
+                                        SELECT
+                                    </Link>
+                                )}
+                                {(status === ADVENTURE_STATUS.LOCKED || status === ADVENTURE_STATUS.MEMBERS_ONLY || status === ADVENTURE_STATUS.UNAVAILABLE) && !wasSelected && (
+                                    <button
+                                        type="button"
+                                        className="glow mx-auto font-bold border border-gray-400 text-xl text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"
+                                        onClick={handleSelection}
+                                    >
+                                        SELECT
+                                    </button>
+                                )}
+                            </>
+                        )
+                    }
                 </article>
             </div>
             {showModal
@@ -133,26 +188,26 @@ export default function Adventure({ id, imageSrc, imageAlt, title, description, 
                                     <CloseIcon className="w-5 h-5" />
                                 </button>
                             </div>
-                            <div className="flex-1 flex-col space-y-2 overflow-y-auto bg-gray-50 p-5 text-center text-black srelative overflow-x-hidden m:h-auto">
+                            <div className="flex-1 flex-col overflow-y-auto bg-gray-50 px-5 pt-5 pb-8 text-center text-black srelative overflow-x-hidden m:h-auto">
                                 {{
                                     [ADVENTURE_STATUS.UNAVAILABLE]: (
                                         <>
                                             <Image priority src="/unavailable.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="text-md">Sorry, but it appears that this adventure is no longer in stock.</p>
+                                            <p className="text-md mt-4">Sorry, but it appears that this adventure is no longer in stock.</p>
                                             <p className="text-md">Please choose another adventure instead.</p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.LOCKED]: (
                                         <>
                                             <Image priority src="/locked.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="text-md">Halt adventurer, you don&apos;t have enough XP to enter this area.</p>
+                                            <p className="text-md mt-4">Halt adventurer, you don&apos;t have enough XP to enter this area.</p>
                                             <p className="text-md">Return when you&apos;ve purchased the deluxe DLC season pass.</p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.MEMBERS_ONLY]: (
                                         <>
                                             <Image priority src="/members-only.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="text-md">This is a <span className="font-bold">RESTRICTED</span> members only area! Leave... <span className="font-bold">NOW</span>!</p>
+                                            <p className="text-md mt-4">This is a <span className="font-bold">RESTRICTED</span> members only area! Leave... <span className="font-bold">NOW</span>!</p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.AVAILABLE]: "",

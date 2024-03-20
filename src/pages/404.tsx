@@ -13,7 +13,7 @@ export default function PageNotFound() {
                 <section className="text-center flex flex-col justify-center items-center space-y-1.5">
                     <Image priority src="/notfound.avif" alt="Page not found" height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto", border: "1px solid #ccc" }} />
                     <header className="!mt-6">
-                        <h1 className="title text-5xl font-bold">ADVENTURE NOT FOUND!</h1>
+                        <h1 className="title text-5xl font-bold uppercase">Adventure Not Found!</h1>
                     </header>
                     <h2 className="text-xl text-red-500 tracking-wide">
                         Woah adventurer, it seems like you took a wrong turn!

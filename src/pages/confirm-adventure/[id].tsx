@@ -15,7 +15,7 @@ export default function ConfirmAdventure({ adventure }: InferGetStaticPropsType<
                 <div className="w-full max-w-screen-xl flex flex-col space-y-16 min-h-screen">
                     <section className="flex flex-col space-y-0.5">
                         <header>
-                            <h1 className="title text-4xl font-bold">CONFIRM YOUR ADVENTURE!</h1>
+                            <h1 className="title text-4xl font-bold uppercase">Confirm Your Adventure!</h1>
                         </header>
                         <p className="text-sm text-gray-300 tracking-wide">
                             There&apos;s still time to turn back, but once you click <span className="text-green-500 text-lg">SELECT</span> that&apos;s it!
@@ -29,7 +29,7 @@ export default function ConfirmAdventure({ adventure }: InferGetStaticPropsType<
                     </section>
                     <section className="flex flex-col justify-center items-center">
                         <div className="w-full max-w-md">
-                            <Adventure {...adventure} priority />
+                            <Adventure {...adventure} showForm priority />
                         </div>
                     </section>
                 </div>

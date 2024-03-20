@@ -14,7 +14,7 @@ export default function ChooseAdventure() {
                 <div className="w-full max-w-screen-xl flex flex-col space-y-16 min-h-screen">
                     <section className="flex flex-col space-y-0.5">
                         <header>
-                            <h1 className="title text-5xl font-bold">CHOOSE YOUR ADVENTURE!</h1>
+                            <h1 className="title text-5xl font-bold uppercase">Choose Your Adventure!</h1>
                         </header>
                         <p className="text-sm text-gray-300 tracking-wide">
                             These <span className="text-lg text-orange-500">second date adventures</span> are available to <span className="text-red-500 text-lg">Katie with a D</span>, please <span className="text-green-500 text-lg">SELECT</span> one to continue!
