@@ -14,10 +14,10 @@ export default function AdventureBegins() {
                 <section className="text-center flex flex-col justify-center items-center space-y-1.5">
                     <Image priority src="/adventure-begins.avif" alt="Adventure begins" height={325} width={325} style={{ borderRadius: "20px", margin: "0 auto", border: "1px solid #ccc" }} />
                     <header className="!mt-6">
-                        <h1 className="title text-4xl font-bold uppercase">Your Adventure Starts Soon!</h1>
+                        <h1 className="title text-4xl font-bold uppercase">Success!</h1>
                     </header>
                     <h2 className="text-xl text-gray-300 tracking-wide">
-                        Thank you for choosing an adventure! We sent your choice via pidgeon to <span className="text-red-500">Matt</span>.
+                        Thank you for choosing an adventure! We sent your choice via pidgeon mail to <span className="text-red-500">Matt</span>.
                     </h2>
                     <h3 className="text-xl text-gray-300 tracking-wide">
                         In the meantime, please wait <span className="text-red-500">{relativeTimeFromNow(new Date("2024-3-30")).replace(/in /, "")}</span> for the horse-drawn carriage to reach you!

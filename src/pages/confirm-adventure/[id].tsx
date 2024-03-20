@@ -18,7 +18,7 @@ export default function ConfirmAdventure({ adventure }: InferGetStaticPropsType<
                             <h1 className="title text-4xl font-bold uppercase">Confirm Your Adventure!</h1>
                         </header>
                         <p className="text-sm text-gray-300 tracking-wide">
-                            There&apos;s still time to turn back, but once you click <span className="text-green-500 text-lg">SELECT</span> that&apos;s it!
+                            There&apos;s still time to turn back, but once you click <span className="text-green-500 text-lg uppercase">select</span>, then that&apos;s it!
                         </p>
                         <Link
                             className="unavailable !mt-4 mx-auto font-bold border border-gray-400 text-sm text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"

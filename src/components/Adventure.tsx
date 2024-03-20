@@ -27,6 +27,7 @@ export default function Adventure(
     }: AdventureProps & { showForm?: boolean }) {
     const router = useRouter();
     const [isSubmitting, setSubmitting] = useState(false);
+    const [error, setError] = useState("");
     const [wasSelected, setWasSelected] = useState(false);
     const [showModal, setShowModal] = useState<ADVENTURE_STATUS>(ADVENTURE_STATUS.AVAILABLE);
 
@@ -41,11 +42,18 @@ export default function Adventure(
 
     const handleSubmit = async () => {
         setSubmitting(true);
-        await new Promise(res => setTimeout(res, 2000));
         try {
+            const res = await fetch(`/api/select-adventure/${id}`);
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw data?.error;
+            }
+
             router.push("/adventure-begins/");
         } catch (error) {
-            console.error(error);
+            setError(String(error));
             setSubmitting(false);
         }
     }
@@ -59,7 +67,19 @@ export default function Adventure(
             document.body.style.overflow = "";
         }
 
-    }, [showModal])
+    }, [showModal]);
+
+    if (error) {
+        return (
+            <div className="border border-red-600 p-2 rounded">
+                <div className="border border-red-300 flex flex-col space-y-4 justify-between pt-6 pb-8 px-4 bg-red-500 bg-opacity-20 min-h-full">
+                    <Image priority={priority} src="/submit-error.avif" alt="form submit error" height={350} width={350} style={{ borderRadius: "20px", margin: "0 auto" }} />
+                    <h2 className="text-2xl font-bold tracking-wide">Halt! Who goes there?</h2>
+                    <h3 className="text-xl font-bold tracking-wide">{error}</h3>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <>
@@ -145,19 +165,19 @@ export default function Adventure(
                             <>
                                 {status === ADVENTURE_STATUS.AVAILABLE && (
                                     <Link
-                                        className="glow mx-auto font-bold border border-gray-400 text-xl text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"
+                                        className="glow uppercase mx-auto font-bold border border-gray-400 text-xl text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"
                                         href={`/confirm-adventure/${id}`}
                                     >
-                                        SELECT
+                                        Select
                                     </Link>
                                 )}
                                 {(status === ADVENTURE_STATUS.LOCKED || status === ADVENTURE_STATUS.MEMBERS_ONLY || status === ADVENTURE_STATUS.UNAVAILABLE) && !wasSelected && (
                                     <button
                                         type="button"
-                                        className="glow mx-auto font-bold border border-gray-400 text-xl text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"
+                                        className="glow uppercase mx-auto font-bold border border-gray-400 text-xl text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"
                                         onClick={handleSelection}
                                     >
-                                        SELECT
+                                        Select
                                     </button>
                                 )}
                             </>
@@ -169,21 +189,21 @@ export default function Adventure(
                 ? createPortal(
                     <div className="fixed bottom-0 top-0 z-10 flex h-full w-full justify-center bg-black bg-opacity-70 focus:outline-none items-center" role="presentation">
                         <div
-                            className="relative z-50 flex flex-col sm:m-4 sm:rounded-md w-[34rem] max-h-full overflow-y-auto sm:h-auto h-full focus-visible"
+                            className="border border-rose-900 relative z-50 flex flex-col sm:m-4 sm:rounded-md w-[34rem] max-h-full overflow-y-auto sm:h-auto h-full focus-visible"
                             role="dialog"
                             aria-labelledby="modal-title"
                             aria-describedby="modal-description"
                             aria-modal="true"
                             tabIndex={0}
                         >
-                            <div className="flex flex-row justify-center items-center border-b border-gray-300 bg-gray-200">
+                            <div className="flex flex-row justify-center items-center border-b border-red-900 bg-black">
                                 <h2
                                     role="presentation"
-                                    className="p-3 text-center text-md text-black font-bold sm:mt-0 sm:text-xl"
+                                    className="p-3 text-center text-md text-white font-bold sm:mt-0 sm:text-xl"
                                     id="modal-title"
                                 >
                                     {{
-                                        [ADVENTURE_STATUS.UNAVAILABLE]: "Unable to Locate Adventure",
+                                        [ADVENTURE_STATUS.UNAVAILABLE]: "Adventure Unavailable",
                                         [ADVENTURE_STATUS.LOCKED]: "DLC Pass Required",
                                         [ADVENTURE_STATUS.MEMBERS_ONLY]: "Halt, Peasant!",
                                         [ADVENTURE_STATUS.AVAILABLE]: "",
@@ -198,7 +218,7 @@ export default function Adventure(
                                     <CloseIcon className="w-5 h-5" />
                                 </button>
                             </div>
-                            <div className="flex-1 flex-col overflow-y-auto bg-gray-50 px-5 pt-5 pb-8 text-center text-black srelative overflow-x-hidden m:h-auto">
+                            <div className="flex-1 flex-col overflow-y-auto bg-black text-white px-5 pt-5 pb-8 text-center relative overflow-x-hidden m:h-auto">
                                 {{
                                     [ADVENTURE_STATUS.UNAVAILABLE]: (
                                         <>
@@ -211,19 +231,19 @@ export default function Adventure(
                                         <>
                                             <Image priority src="/locked.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
                                             <p className="text-md mt-4">Halt adventurer, you don&apos;t have enough XP to enter this adventure.</p>
-                                            <p className="text-md">Return when you&apos;ve purchased the deluxe DLC season pass.</p>
+                                            <p className="text-md">Return after you&apos;ve purchased the deluxe DLC season pass for <a className="text-blue-500 font-bold hover:underline" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" referrerPolicy="no-referrer">$49.99 (click to purchase)</a></p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.MEMBERS_ONLY]: (
                                         <>
                                             <Image priority src="/members-only.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="text-md mt-4">This is a <span className="font-bold">RESTRICTED</span> members only adventure! Leave... <span className="font-bold">NOW</span>!</p>
+                                            <p className="text-md mt-4">This is a <span className="font-bold">RESTRICTED</span> <span className="text-yellow-500 font-bold">members</span> only adventure! Leave... <span className="text-red-500 font-bold">NOW!</span></p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.AVAILABLE]: "",
                                 }[status]}
                             </div>
-                            <div className="flex flex-initial border-t border-gray-300 bg-gray-200 p-4" />
+                            <div className="flex flex-initial border-t border-red-900 bg-black p-4" />
                         </div>
                     </div>
                     , document.body)
