@@ -75,17 +75,27 @@ export default function Adventure(
                         )}
                 >
                     <Image priority={priority} src={`/${imageSrc}.avif`} alt={imageAlt} height={300} width={300} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                    <div className="flex flex-col backshadow">
+                    <div className="flex flex-col space-y-0.5 backshadow">
                         <h2 className="backshadow text-2xl">
                             {title}
                         </h2>
                         <p className="text-sm text-gray-300">
-                            <span className="text-lg">Location</span>: {location}
+                            Location: {location}
                         </p>
                         <p className="text-sm text-gray-300">
-                            <span className="text-lg">Difficulty</span>: {difficulty}
+                            Difficulty:&nbsp;
+                            <span
+                                className={clsx(
+                                    difficulty === "Easy" && "text-green-500",
+                                    difficulty === "Normal" && "text-orange-500",
+                                    difficulty === "Heroic" && "text-purple-500",
+                                    difficulty === "Legendary" && "text-yellow-500",
+                                )}
+                            >
+                                {difficulty}
+                            </span>
                         </p>
-                        <p className="text-sm text-gray-300 mt-4 min-h-[11rem]">
+                        <p className="text-sm text-gray-300 !mt-4 min-h-[11rem]">
                             {description}
                         </p>
                     </div>
@@ -200,14 +210,14 @@ export default function Adventure(
                                     [ADVENTURE_STATUS.LOCKED]: (
                                         <>
                                             <Image priority src="/locked.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="text-md mt-4">Halt adventurer, you don&apos;t have enough XP to enter this area.</p>
+                                            <p className="text-md mt-4">Halt adventurer, you don&apos;t have enough XP to enter this adventure.</p>
                                             <p className="text-md">Return when you&apos;ve purchased the deluxe DLC season pass.</p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.MEMBERS_ONLY]: (
                                         <>
                                             <Image priority src="/members-only.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="text-md mt-4">This is a <span className="font-bold">RESTRICTED</span> members only area! Leave... <span className="font-bold">NOW</span>!</p>
+                                            <p className="text-md mt-4">This is a <span className="font-bold">RESTRICTED</span> members only adventure! Leave... <span className="font-bold">NOW</span>!</p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.AVAILABLE]: "",
