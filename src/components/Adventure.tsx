@@ -71,7 +71,7 @@ export default function Adventure(
                             status === ADVENTURE_STATUS.UNAVAILABLE && wasSelected && "unavailable",
                             status === ADVENTURE_STATUS.LOCKED && wasSelected && "locked",
                             status === ADVENTURE_STATUS.MEMBERS_ONLY && wasSelected && "gold",
-                            "border border-gray-300 flex flex-col space-y-6 justify-between col-span-1 pt-6 pb-8 px-4 bg-black min-h-full"
+                            "border border-gray-300 flex flex-col space-y-4 justify-between col-span-1 pt-6 pb-8 px-4 bg-black min-h-full"
                         )}
                 >
                     <Image priority={priority} src={`/${imageSrc}.avif`} alt={imageAlt} height={300} width={300} style={{ borderRadius: "20px", margin: "0 auto" }} />
@@ -85,7 +85,7 @@ export default function Adventure(
                         <p className="text-sm text-gray-300">
                             <span className="text-lg">Difficulty</span>: {difficulty}
                         </p>
-                        <p className="text-sm text-gray-300 mt-6">
+                        <p className="text-sm text-gray-300 mt-4 min-h-[11rem]">
                             {description}
                         </p>
                     </div>
