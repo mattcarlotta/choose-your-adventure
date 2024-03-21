@@ -38,7 +38,7 @@ export function humanReadableDate(date = "") {
     }).format(new Date(date));
 }
 
-export default function relativeTimeFromNow(date?: string | Date) {
+export default function relativeTimeFromNow(date?: string) {
     if (!date) return "";
     const d = new Date(date);
     const elapsed = d.getTime() - new Date().getTime();
