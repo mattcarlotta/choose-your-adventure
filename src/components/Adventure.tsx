@@ -72,10 +72,10 @@ export default function Adventure(
     if (error) {
         return (
             <div className="border border-red-600 p-2 rounded">
-                <div className="border border-red-300 flex flex-col space-y-4 justify-between pt-6 pb-8 px-4 bg-red-500 bg-opacity-20 min-h-full">
+                <div className="border border-red-300 flex flex-col space-y-2 justify-between bg-red-500 bg-opacity-20 min-h-full p-4 sm:space-y-4 sm:pt-6 sm:pb-8 sm:px-4">
                     <Image priority={priority} src="/submit-error.avif" alt="form submit error" height={350} width={350} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                    <h2 className="text-2xl font-bold">Halt, adventurer!</h2>
-                    <h3 className="text-xl font-bold tracking-wide">{error}</h3>
+                    <h2 className="text-lg font-bold sm:text-2xl">Halt, Explorer!</h2>
+                    <h3 className="text-sm font-bold tracking-wide sm:text-xl">{error}</h3>
                 </div>
             </div>
         )
@@ -96,13 +96,13 @@ export default function Adventure(
                 >
                     <Image priority={priority} src={`/${imageSrc}.avif`} alt={imageAlt} height={300} width={300} style={{ borderRadius: "20px", margin: "0 auto" }} />
                     <div className="flex flex-col space-y-0.5 backshadow">
-                        <h2 className="backshadow text-2xl">
+                        <h2 className="backshadow text-lg sm:text-2xl">
                             {title}
                         </h2>
-                        <p className="text-sm text-gray-300">
+                        <p className="text-xs text-gray-300 sm:text-sm">
                             Location: {location}
                         </p>
-                        <p className="text-sm text-gray-300">
+                        <p className="text-xs text-gray-300 sm:text-sm">
                             Difficulty:&nbsp;
                             <span
                                 className={clsx(
@@ -115,7 +115,7 @@ export default function Adventure(
                                 {difficulty}
                             </span>
                         </p>
-                        <p className="text-sm text-gray-300 !mt-4 min-h-[11rem]">
+                        <p className="text-sm text-gray-300 !my-4 sm:min-h-[14rem] sm:text-base">
                             {description}
                         </p>
                     </div>
@@ -124,22 +124,22 @@ export default function Adventure(
                             <>
                                 {{
                                     [ADVENTURE_STATUS.UNAVAILABLE]: (
-                                        <div className="flex space-x-2 items-center mx-auto font-bold text-xl text-gray-400 px-8 py-2 cursor-not-allowed rounded">
-                                            <UnavailableIcon className="w-5 h-5 fill-gray-400" />
+                                        <div className="flex space-x-2 items-center mx-auto font-bold text-gray-400 px-8 py-2 cursor-not-allowed rounded sm:text-xl">
+                                            <UnavailableIcon className="w-5 h-5 fill-gray-400 sm:w-5 sm:h-5" />
                                             <span>OUT OF STOCK</span>
                                         </div>
 
                                     ),
                                     [ADVENTURE_STATUS.LOCKED]: (
-                                        <div className="flex space-x-2 items-center mx-auto font-bold border border-gray-400 text-xl text-gray-400 px-8 py-2 cursor-not-allowed rounded">
-                                            <LockedIcon className="w-5 h-5 fill-gray-400" />
+                                        <div className="flex space-x-2 items-center mx-auto font-bold border border-gray-400 text-gray-400 px-8 py-2 cursor-not-allowed rounded sm:text-xl">
+                                            <LockedIcon className="w-4 h-4 fill-gray-400 sm:w-5 sm:h-5" />
                                             <span>DLC PASS ONLY</span>
                                         </div>
 
                                     ),
                                     [ADVENTURE_STATUS.MEMBERS_ONLY]: (
-                                        <p className="flex space-x-2 items-center members-only mx-auto font-bold border text-xl text-gray-300 px-6 py-2 cursor-not-allowed rounded">
-                                            <KeyIcon className="w-6 h-6 fill-black" />
+                                        <p className="flex space-x-2 items-center members-only mx-auto font-bold border text-gray-300 px-6 py-2 cursor-not-allowed rounded sm:text-xl">
+                                            <KeyIcon className="w-5 h-5 fill-black sm:w-6 sm:h-6" />
                                             <span>MEMBERS ONLY</span>
                                         </p>
 
@@ -155,7 +155,7 @@ export default function Adventure(
                             <button
                                 type="button"
                                 disabled={isSubmitting}
-                                className="glow mx-auto font-bold border border-gray-400 text-xl text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"
+                                className="glow mx-auto font-bold border border-gray-400 text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white sm:text-xl"
                                 onClick={handleSubmit}
                             >
                                 {isSubmitting ? "STARTING..." : "START"}
@@ -165,7 +165,7 @@ export default function Adventure(
                             <>
                                 {status === ADVENTURE_STATUS.AVAILABLE && (
                                     <Link
-                                        className="glow uppercase mx-auto font-bold border border-gray-400 text-xl text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"
+                                        className="glow uppercase mx-auto font-bold border border-gray-400 text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white sm:text-xl"
                                         href={`/confirm-adventure/${id}`}
                                     >
                                         Select
@@ -174,7 +174,7 @@ export default function Adventure(
                                 {(status === ADVENTURE_STATUS.LOCKED || status === ADVENTURE_STATUS.MEMBERS_ONLY || status === ADVENTURE_STATUS.UNAVAILABLE) && !wasSelected && (
                                     <button
                                         type="button"
-                                        className="glow uppercase mx-auto font-bold border border-gray-400 text-xl text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"
+                                        className="glow uppercase mx-auto font-bold border border-gray-400 text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white sm:text-xl"
                                         onClick={handleSelection}
                                     >
                                         Select
@@ -199,7 +199,7 @@ export default function Adventure(
                             <div className="flex flex-row justify-center items-center border-b border-red-900 bg-black">
                                 <h2
                                     role="presentation"
-                                    className="p-3 text-center text-md text-white font-bold sm:mt-0 sm:text-xl"
+                                    className="p-3 text-center text-white font-bold sm:mt-0 sm:text-xl"
                                     id="modal-title"
                                 >
                                     {{
@@ -223,22 +223,21 @@ export default function Adventure(
                                     [ADVENTURE_STATUS.UNAVAILABLE]: (
                                         <>
                                             <Image priority src="/unavailable.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="text-md mt-4">Sorry adventurer, but this adventure is no longer in stock.</p>
-                                            <p className="text-md">Please choose another adventure instead.</p>
+                                            <p className="mt-4">Sorry explorer, but this adventure is no longer in stock.</p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.LOCKED]: (
                                         <>
                                             <Image priority src="/locked.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="text-md mt-4">Halt adventurer, you don&apos;t have enough XP to enter this area yet.</p>
-                                            <p className="text-md">Return after you&apos;ve purchased the deluxe DLC season pass for <a className="text-blue-500 font-bold hover:underline" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" referrerPolicy="no-referrer">$49.99 (click to purchase)</a></p>
+                                            <p className="mt-4">Halt explorer, you don&apos;t have enough XP to enter this area yet.</p>
+                                            <p className="mt-4 sm:mt-0">Return after you&apos;ve purchased the deluxe DLC season pass for <a className="text-blue-500 font-bold hover:underline" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" referrerPolicy="no-referrer">$49.99 (click to purchase)</a></p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.MEMBERS_ONLY]: (
                                         <>
                                             <Image priority src="/members-only.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="text-md mt-4">This adventure is <span className="font-bold">RESTRICTED</span> to <span className="text-yellow-500 font-bold">members only!</span></p>
-                                            <p className="text-md">Leave <span className="text-red-500 font-bold">NOW</span> or else I&apos;ll throw you in jail.</p>
+                                            <p className="mt-4">This adventure is <span className="font-bold">RESTRICTED</span> to <span className="text-yellow-500 font-bold">members only!</span></p>
+                                            <p>Leave <span className="text-red-500 font-bold">NOW</span> peasant or else I&apos;ll throw you in jail.</p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.AVAILABLE]: "",

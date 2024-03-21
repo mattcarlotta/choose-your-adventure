@@ -11,17 +11,17 @@ export default function ConfirmAdventure({ adventure }: InferGetStaticPropsType<
             <Head>
                 <title>Confirm Your Adventure!</title>
             </Head>
-            <div className="flex justify-center items-center text-center p-20">
+            <div className="flex justify-center items-center text-center px-4 py-12 sm:p-24">
                 <div className="w-full max-w-screen-xl flex flex-col space-y-16 min-h-screen">
                     <section className="flex flex-col space-y-0.5">
                         <header>
-                            <h1 className="title text-4xl font-bold uppercase">Confirm Your Adventure!</h1>
+                            <h1 className="title text-xl font-bold uppercase sm:text-5xl">Confirm Your Adventure!</h1>
                         </header>
                         <p className="text-sm text-gray-300 tracking-wide">
-                            There&apos;s <span className="text-lg text-orange-500">still time to turn back</span>, but once you click <span className="text-lg uppercase text-green-500">start</span>, then... <span className="text-lg text-red-500">that&apos;s it!</span>
+                            There&apos;s <span className="text-orange-500 sm:text-lg">still time to turn back</span>, but once you click <span className="uppercase text-green-500 sm:text-lg">start</span>, then... <span className="text-red-500 sm:text-lg">that&apos;s it!</span>
                         </p>
                         <Link
-                            className="unavailable !mt-4 mx-auto font-bold border border-gray-400 text-sm text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white"
+                            className="unavailable !mt-4 mx-auto text-xs font-bold border border-gray-400 text-gray-300 px-10 py-2 cursor-pointer rounded hover:border-white hover:text-white sm:text-sm"
                             href="/choose-adventure"
                         >
                             GO BACK

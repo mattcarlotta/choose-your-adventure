@@ -21,7 +21,7 @@ export default async function handler(
     const emailAddress = process.env.EMAIL_ADDRESS || "";
 
     if (!emailAddress) {
-        return res.status(403).json({ error: "An adventure has already been started..." });
+        return res.status(403).json({ error: "An adventure has already started..." });
     }
 
     const msg = {
