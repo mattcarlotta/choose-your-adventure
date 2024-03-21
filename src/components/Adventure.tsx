@@ -74,7 +74,7 @@ export default function Adventure(
             <div className="border border-red-600 p-2 rounded">
                 <div className="border border-red-300 flex flex-col space-y-4 justify-between pt-6 pb-8 px-4 bg-red-500 bg-opacity-20 min-h-full">
                     <Image priority={priority} src="/submit-error.avif" alt="form submit error" height={350} width={350} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                    <h2 className="text-2xl font-bold tracking-wide">Halt! Who goes there?</h2>
+                    <h2 className="text-2xl font-bold">Halt, adventurer!</h2>
                     <h3 className="text-xl font-bold tracking-wide">{error}</h3>
                 </div>
             </div>
@@ -223,21 +223,22 @@ export default function Adventure(
                                     [ADVENTURE_STATUS.UNAVAILABLE]: (
                                         <>
                                             <Image priority src="/unavailable.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="text-md mt-4">Sorry, but it appears that this adventure is no longer in stock.</p>
+                                            <p className="text-md mt-4">Sorry adventurer, but this adventure is no longer in stock.</p>
                                             <p className="text-md">Please choose another adventure instead.</p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.LOCKED]: (
                                         <>
                                             <Image priority src="/locked.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="text-md mt-4">Halt adventurer, you don&apos;t have enough XP to enter this adventure.</p>
+                                            <p className="text-md mt-4">Halt adventurer, you don&apos;t have enough XP to enter this area yet.</p>
                                             <p className="text-md">Return after you&apos;ve purchased the deluxe DLC season pass for <a className="text-blue-500 font-bold hover:underline" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" referrerPolicy="no-referrer">$49.99 (click to purchase)</a></p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.MEMBERS_ONLY]: (
                                         <>
                                             <Image priority src="/members-only.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="text-md mt-4">This is a <span className="font-bold">RESTRICTED</span> <span className="text-yellow-500 font-bold">members</span> only adventure! Leave... <span className="text-red-500 font-bold">NOW!</span></p>
+                                            <p className="text-md mt-4">This adventure is <span className="font-bold">RESTRICTED</span> to <span className="text-yellow-500 font-bold">members only!</span></p>
+                                            <p className="text-md">Leave <span className="text-red-500 font-bold">NOW</span> or else I&apos;ll throw you in jail.</p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.AVAILABLE]: "",
