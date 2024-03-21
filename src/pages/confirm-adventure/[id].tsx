@@ -9,7 +9,7 @@ export default function ConfirmAdventure({ adventure }: InferGetStaticPropsType<
     return (
         <>
             <Head>
-                <title>Confirm Your Adventure!</title>
+                <title>Confirm Your {adventure.title} Adventure!</title>
             </Head>
             <div className="flex justify-center items-center text-center px-4 py-12 sm:p-24">
                 <div className="w-full max-w-screen-xl flex flex-col space-y-16 min-h-screen">

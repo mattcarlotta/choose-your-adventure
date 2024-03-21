@@ -74,7 +74,7 @@ export default function Adventure(
             <div className="border border-red-600 p-2 rounded">
                 <div className="border border-red-300 flex flex-col space-y-2 justify-between bg-red-500 bg-opacity-20 min-h-full p-4 sm:space-y-4 sm:pt-6 sm:pb-8 sm:px-4">
                     <Image priority={priority} src="/submit-error.avif" alt="form submit error" height={350} width={350} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                    <h2 className="text-lg font-bold sm:text-2xl">Halt, Explorer!</h2>
+                    <h2 className="text-lg font-bold sm:text-3xl">Halt, Explorer!</h2>
                     <h3 className="text-sm font-bold tracking-wide sm:text-xl">{error}</h3>
                 </div>
             </div>
@@ -223,14 +223,14 @@ export default function Adventure(
                                     [ADVENTURE_STATUS.UNAVAILABLE]: (
                                         <>
                                             <Image priority src="/unavailable.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="mt-4">Sorry explorer, but this adventure is no longer in stock.</p>
+                                            <p className="mt-4">Sorry explorer, but this adventure is <span className="text-red-500">out of stock.</span></p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.LOCKED]: (
                                         <>
                                             <Image priority src="/locked.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
                                             <p className="mt-4">Halt explorer, you don&apos;t have enough XP to enter this area yet.</p>
-                                            <p className="mt-4 sm:mt-0">Return after you&apos;ve purchased the deluxe DLC season pass for <a className="text-blue-500 font-bold hover:underline" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" referrerPolicy="no-referrer">$49.99 (click to purchase)</a></p>
+                                            <p className="mt-4 sm:mt-0">Return once you&apos;ve purchased the deluxe <span className="font-bold text-gray-500">DLC season pass</span> for <a className="text-blue-500 font-bold hover:underline" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" referrerPolicy="no-referrer">$49.99 (click to purchase)</a></p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.MEMBERS_ONLY]: (
