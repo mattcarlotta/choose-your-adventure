@@ -126,7 +126,7 @@ export default function Adventure(
                                     [ADVENTURE_STATUS.UNAVAILABLE]: (
                                         <div className="flex space-x-2 items-center mx-auto font-bold text-gray-400 px-8 py-2 cursor-not-allowed rounded sm:text-xl">
                                             <UnavailableIcon className="w-5 h-5 fill-gray-400 sm:w-5 sm:h-5" />
-                                            <span>OUT OF STOCK</span>
+                                            <span>UNAVAILABLE</span>
                                         </div>
 
                                     ),
@@ -223,7 +223,7 @@ export default function Adventure(
                                     [ADVENTURE_STATUS.UNAVAILABLE]: (
                                         <>
                                             <Image priority src="/unavailable.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="mt-4">Sorry explorer, but this adventure is <span className="text-red-500">out of stock.</span></p>
+                                            <p className="mt-4">Sorry explorer, but this adventure is <span className="text-red-500">unavailable.</span></p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.LOCKED]: (
