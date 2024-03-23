@@ -4,12 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from 'react-dom';
+import { useRouter } from "next/router";
 import KeyIcon from "./KeyIcon";
 import LockedIcon from "./LockedIcon";
 import UnavailableIcon from "./UnavailableIcon";
 import CloseIcon from "./CloseIcon";
 import { ADVENTURE_STATUS } from "../data"
-import { useRouter } from "next/router";
 
 
 export default function Adventure(
@@ -96,7 +96,7 @@ export default function Adventure(
                 >
                     <Image priority={priority} src={`/${imageSrc}.avif`} alt={imageAlt} height={300} width={300} style={{ borderRadius: "20px", margin: "0 auto" }} />
                     <div className="flex flex-col space-y-0.5 backshadow">
-                        <h2 className="backshadow text-lg sm:text-2xl">
+                        <h2 className="text-lg sm:text-2xl">
                             {title}
                         </h2>
                         <p className="text-xs text-gray-300 sm:text-sm">
@@ -206,7 +206,7 @@ export default function Adventure(
                                         [ADVENTURE_STATUS.UNAVAILABLE]: "Adventure Unavailable",
                                         [ADVENTURE_STATUS.LOCKED]: "DLC Pass Required",
                                         [ADVENTURE_STATUS.MEMBERS_ONLY]: "Halt, Peasant!",
-                                        [ADVENTURE_STATUS.AVAILABLE]: "",
+                                        [ADVENTURE_STATUS.AVAILABLE]: null,
                                     }[status]}
                                 </h2>
                                 <button
@@ -223,24 +223,24 @@ export default function Adventure(
                                     [ADVENTURE_STATUS.UNAVAILABLE]: (
                                         <>
                                             <Image priority src="/unavailable.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="mt-4">Sorry explorer, but this adventure is <span className="text-red-500">unavailable.</span></p>
+                                            <p className="mt-4">Sorry explorer, but this adventure is <span className="text-red-500 font-bold">unavailable.</span></p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.LOCKED]: (
                                         <>
                                             <Image priority src="/locked.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="mt-4">Halt explorer, you don&apos;t have enough XP to enter this area yet.</p>
+                                            <p className="mt-4">Halt explorer, <span className="text-orange-500 font-bold">you</span> don&apos;t have <span className="text-red-500 font-bold">enough XP </span> to enter this area yet.</p>
                                             <p className="mt-4 sm:mt-0">Return once you&apos;ve purchased the deluxe <span className="font-bold text-gray-500">DLC season pass</span> for <a className="text-blue-500 font-bold hover:underline" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" referrerPolicy="no-referrer">$49.99 (click to purchase)</a></p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.MEMBERS_ONLY]: (
                                         <>
                                             <Image priority src="/members-only.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="mt-4">This adventure is <span className="font-bold">RESTRICTED</span> to <span className="text-yellow-500 font-bold">members only!</span></p>
-                                            <p>Leave <span className="text-red-500 font-bold">NOW</span> peasant or else I&apos;ll throw you in jail.</p>
+                                            <p className="mt-4">This adventure is <span className="text-red-500 font-bold">RESTRICTED</span> to <span className="text-yellow-500 font-bold">members only!</span></p>
+                                            <p>Leave <span className="text-red-500 font-bold">NOW</span> or else I&apos;ll throw <span className="text-orange-500 font-bold">you</span> in jail.</p>
                                         </>
                                     ),
-                                    [ADVENTURE_STATUS.AVAILABLE]: "",
+                                    [ADVENTURE_STATUS.AVAILABLE]: null,
                                 }[status]}
                             </div>
                             <div className="flex flex-initial border-t border-red-900 bg-black p-4" />

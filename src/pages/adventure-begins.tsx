@@ -20,8 +20,8 @@ export default function AdventureBegins() {
             <Head>
                 <title>Thank You Choosing An Adventure!</title>
             </Head>
-            <div className="flex min-h-screen flex-col items-center justify-center p-8 sm:p-24">
-                <section className="text-center flex flex-col justify-center items-center space-y-1.5">
+            <div className="flex flex-col items-center justify-center min-h-screen p-8 sm:p-24">
+                <section className="flex flex-col justify-center items-center space-y-1.5 text-center">
                     <Image priority src="/adventure-begins.avif" alt="Adventure begins" height={325} width={325} style={{ borderRadius: "20px", margin: "0 auto", border: "1px solid #ccc" }} />
                     <header className="!mt-6">
                         <h1 className="title text-xl font-bold uppercase sm:text-5xl">Adventure Begins Soon!</h1>

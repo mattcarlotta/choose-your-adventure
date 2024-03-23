@@ -18,7 +18,7 @@ export default async function handler(
         return res.status(400).json({ error: "You must select a valid adventure!" });
     }
 
-    const emailAddress = process.env.EMAIL_ADDRESS || "";
+    const emailAddress = process.env.EMAIL_ADDRESS;
 
     if (!emailAddress) {
         return res.status(403).json({ error: "An adventure has already started..." });
@@ -38,7 +38,6 @@ export default async function handler(
         await sgMail.send(msg);
     } catch (error) {
         return res.status(500).json({ error: error?.toString() });
-
     }
 
     delete process.env.EMAIL_ADDRESS;

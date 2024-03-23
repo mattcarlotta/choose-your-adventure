@@ -1,6 +1,6 @@
-import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Rosarivo } from "next/font/google";
+import "../styles/globals.css";
 
 const rosarivo = Rosarivo({ weight: "400", subsets: ["latin"], display: "swap" });
 

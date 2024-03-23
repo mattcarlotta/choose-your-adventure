@@ -11,8 +11,8 @@ export default function ConfirmAdventure({ adventure }: InferGetStaticPropsType<
             <Head>
                 <title>Confirm Your Adventure!</title>
             </Head>
-            <div className="flex justify-center items-center text-center px-4 py-12 sm:p-24">
-                <div className="w-full max-w-screen-xl flex flex-col space-y-16 min-h-screen">
+            <div className="flex justify-center items-center text-center min-h-screen px-4 py-12 sm:p-24">
+                <div className="w-full max-w-screen-xl flex flex-col space-y-16">
                     <section className="flex flex-col space-y-0.5">
                         <header>
                             <h1 className="title text-xl font-bold uppercase sm:text-5xl">Confirm Your Adventure!</h1>
