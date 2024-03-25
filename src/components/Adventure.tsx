@@ -222,9 +222,9 @@ export default function Adventure(
                                 {{
                                     [ADVENTURE_STATUS.UNAVAILABLE]: (
                                         <>
-                                            <Image priority src="/unavailable.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="mt-4">Sorry explorer, but you&apos;ve already <span className="text-red-500 font-bold">completed</span> this adventure!</p>
-                                            <p>Please another adventure instead.</p>
+                                            <Image priority src="/completed.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
+                                            <p className="mt-4">Sorry explorer, but you&apos;ve already <span className="text-green-600 font-bold">completed</span> this adventure!</p>
+                                            <p>Please choose another adventure instead.</p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.LOCKED]: (
