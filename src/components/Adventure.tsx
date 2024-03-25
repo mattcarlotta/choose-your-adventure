@@ -88,7 +88,7 @@ export default function Adventure(
                     className={
                         clsx(
                             !wasSelected && "adventure",
-                            status === ADVENTURE_STATUS.UNAVAILABLE && wasSelected && "unavailable",
+                            status === ADVENTURE_STATUS.UNAVAILABLE && wasSelected && "completed",
                             status === ADVENTURE_STATUS.LOCKED && wasSelected && "locked",
                             status === ADVENTURE_STATUS.MEMBERS_ONLY && wasSelected && "gold",
                             "border border-gray-300 flex flex-col space-y-4 justify-between col-span-1 pt-6 pb-8 px-4 bg-black min-h-full"
@@ -124,9 +124,9 @@ export default function Adventure(
                             <>
                                 {{
                                     [ADVENTURE_STATUS.UNAVAILABLE]: (
-                                        <div className="flex space-x-2 items-center mx-auto font-bold text-gray-400 px-8 py-2 cursor-not-allowed rounded sm:text-xl">
-                                            <UnavailableIcon className="w-5 h-5 fill-gray-400 sm:w-5 sm:h-5" />
-                                            <span>UNAVAILABLE</span>
+                                        <div className="flex space-x-2 items-center mx-auto font-bold text-gray-300 px-8 py-2 cursor-not-allowed rounded sm:text-xl">
+                                            <span className="text-lg">&#10003;</span>
+                                            <span>COMPLETED</span>
                                         </div>
 
                                     ),
@@ -203,7 +203,7 @@ export default function Adventure(
                                     id="modal-title"
                                 >
                                     {{
-                                        [ADVENTURE_STATUS.UNAVAILABLE]: "Adventure Unavailable",
+                                        [ADVENTURE_STATUS.UNAVAILABLE]: "Adventure Completed",
                                         [ADVENTURE_STATUS.LOCKED]: "DLC Pass Required",
                                         [ADVENTURE_STATUS.MEMBERS_ONLY]: "Halt, Peasant!",
                                         [ADVENTURE_STATUS.AVAILABLE]: null,
@@ -223,7 +223,8 @@ export default function Adventure(
                                     [ADVENTURE_STATUS.UNAVAILABLE]: (
                                         <>
                                             <Image priority src="/unavailable.avif" alt={imageAlt} height={400} width={400} style={{ borderRadius: "20px", margin: "0 auto" }} />
-                                            <p className="mt-4">Sorry explorer, but this adventure is <span className="text-red-500 font-bold">unavailable.</span></p>
+                                            <p className="mt-4">Sorry explorer, but you&apos;ve already <span className="text-red-500 font-bold">completed</span> this adventure!</p>
+                                            <p>Please another adventure instead.</p>
                                         </>
                                     ),
                                     [ADVENTURE_STATUS.LOCKED]: (
