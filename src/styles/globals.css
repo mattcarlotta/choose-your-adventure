@@ -3,19 +3,30 @@
 @tailwind utilities;
 
 body {
-  color: #fff;
-  background:
-		linear-gradient(-135deg, rgb(10, 16, 19) 10%, transparent),
-		repeating-linear-gradient(45deg, rgba(26, 40, 49, 1) 0%, rgba(27, 38, 44, 0.6) 5%, transparent 10%, transparent 10%),
-		repeating-linear-gradient(-45deg, rgba(26, 40, 49, 0.4) 0%, rgba(27, 38, 44, 0.5) 5%, transparent 10%, transparent 10%);
-  background-color: rgba(27, 38, 44, 0.94);
+    color: #fff;
+    background: linear-gradient(-135deg, rgb(10, 16, 19) 10%, transparent),
+        repeating-linear-gradient(
+            45deg,
+            rgba(26, 40, 49, 1) 0%,
+            rgba(27, 38, 44, 0.6) 5%,
+            transparent 10%,
+            transparent 10%
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            rgba(26, 40, 49, 0.4) 0%,
+            rgba(27, 38, 44, 0.5) 5%,
+            transparent 10%,
+            transparent 10%
+        );
+    background-color: rgba(27, 38, 44, 0.94);
 }
 
 .title {
-    color: #9b8651; 
-    background-image: linear-gradient(45deg, #9b8651 25%, #ffe4b8 50%, #9b8651 75%); 
-    background-clip: text; 
-    -webkit-background-clip: text; 
+    color: #9b8651;
+    background-image: linear-gradient(45deg, #9b8651 25%, #ffe4b8 50%, #9b8651 75%);
+    background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -39,7 +50,8 @@ body {
         inset 20px 0 30px #479ea8,
         inset -20px 0 30px #479ea8,
         inset 20px 0 20px #479ea8,
-        inset -20px 0 20px #479ea8, 0 0 10px #fff;
+        inset -20px 0 20px #479ea8,
+        0 0 10px #fff;
 }
 
 .locked {
